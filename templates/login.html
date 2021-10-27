@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login de Usuarios
+{% endblock %}
+
+{% block content %}
+<div class="centrado">
+    <form action="" method="post">
+        {{ frm.hidden_tag() }}
+        <p>
+            {{ frm.username.label }}
+            {{ frm.username }}
+            {% for error in frm.username.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.password.label }}
+            {{ frm.password }}
+            {% for error in frm.password.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        {{ frm.entrar }}
+    </form>
+    <a href="/registro">Registrarse</a>
+</div>
+{% endblock %}

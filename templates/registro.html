@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}
+Registro de Usuarios
+{% endblock %}
+
+{% block content %}
+<div class="centrado">
+
+
+    <form action="" method="post">
+        {{ frm.hidden_tag() }}
+        <p>
+            {{ frm.username.label }}
+            {{ frm.username }}
+            {% for error in frm.username.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.nombre.label }}
+            {{ frm.nombre }}
+            {% for error in frm.nombre.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.password.label }}
+            {{ frm.password }}
+            {% for error in frm.password.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.correo.label }}
+            {{ frm.correo }}
+            {% for error in frm.correo.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        {{ frm.enviar }}
+        {{ frm.editar }}
+        {{ frm.eliminar }}
+        {{ frm.consultar }}
+    </form>
+</div>
+{% endblock %}

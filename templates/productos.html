@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+Administración de Productos
+{% endblock %}
+
+{% block content %}
+<div>Bienvenido, {{username}} </div>
+<a href="/logout">Cerrar Sesión</a>
+<div class="centrado">
+
+    <form action="/producto/save" method="post" onsubmit="return confirmarBorrado()">
+        {{ frm.hidden_tag() }}
+        <p>
+            {{ frm.codigo.label }}
+            {{ frm.codigo }}
+            {% for error in frm.codigo.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.nombre.label }}
+            {{ frm.nombre }}
+            {% for error in frm.nombre.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.precio.label }}
+            {{ frm.precio }}
+            {% for error in frm.precio.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        <p>
+            {{ frm.stock.label }}
+            {{ frm.stock }}
+            {% for error in frm.stock.errors %}
+        <div>
+            {{ error }}
+        </div>
+        {% endfor %}
+        </p>
+        {{ frm.guardar }}
+        {{ frm.editar }}
+        {% if session.perfil == 1 %}
+            {{ frm.eliminar }}
+        {% endif %}
+        {{ frm.consultar }}
+    </form>
+    {% for msg in get_flashed_messages() %}
+        <div>
+            {{ msg }}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
